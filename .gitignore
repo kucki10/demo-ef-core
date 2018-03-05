@@ -1,0 +1,5 @@
+# ignore the entire directory
+.vs/
+bin/
+obj/
+*.csproj.user
