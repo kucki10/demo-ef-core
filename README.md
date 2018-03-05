@@ -1,5 +1,14 @@
 # Battle plan for Demo of EF Core
 
+## Interresting links
+- [Quick overview](https://docs.microsoft.com/en-us/ef/core/)
+- [EF Tutorial](http://www.entityframeworktutorial.net/efcore/entity-framework-core-tutorial.aspx)
+- [Learn EF Core](https://www.learnentityframeworkcore.com/)
+- []()
+- []()
+
+
+
 ## Installing EF-Core 
 Install db provider: `Install-Package Microsoft.EntityFrameworkCore.SqlServer`
 
@@ -37,23 +46,25 @@ Create class `Category` and `Product` ...
 ## Add connection string
 Adjust method `ConfigureServices` of class `Startup.cs`
 ```csharp
-var connection = @"Server=LENOVO-LUCA;Database=SampleDb;Trusted_Connection=True;ConnectRetryCount=0";
-services.AddDbContext<BloggingContext>(options => options.UseSqlServer(connection));
+const string serverName = "LENOVO-LUCA";
+const string dbName = "SampleDb";
+
+var connection = @"Server="+ serverName + ";Database=" + dbName + ";Trusted_Connection=True;ConnectRetryCount=0";
+services.AddDbContext<DatabaseContext>(options => options.UseSqlServer(connection));
 ```
 
 
 ## Now let's create the database
-1. Open the PMC
-    
+1. Open the PMC <br>
     **Tools –> NuGet Package Manager –> Package Manager Console**
 
 2. Run `Add-Migration InitialSetup`
 3. Run `Update-Database` to apply the new migration to the database.
 
-> *Q: Which connection string is used?* <br>
-> A: Somehow it uses he code (Solution -> Startup Project)
+> **Q: Which connection string is used?** <br>
+> A: Somehow it uses the code (Solution -> Startup Project)
 
->*Q: How to revert a migration?* <br>
+>**Q: How to revert a migration?** <br>
 > A: Use command `Remove-Migration` to revert the generated migrations
 
 
