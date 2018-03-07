@@ -36,6 +36,7 @@ namespace EF_Core_Demo.Controllers
 
             var product = await _context.Products
                 .Include(p => p.Category)
+                //.Include(p => p.Ratings)
                 .SingleOrDefaultAsync(m => m.ProductId == id);
             if (product == null)
             {

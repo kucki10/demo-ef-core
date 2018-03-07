@@ -1,9 +1,10 @@
-﻿@model EF_Core_Demo.Models.DB.Product
+﻿@model EF_Core_Demo.Models.DB.Product  
 
 @{
     ViewData["Title"] = "Details";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+
 
 <h2>Details</h2>
 
@@ -27,9 +28,43 @@
             @Html.DisplayNameFor(model => model.Category)
         </dt>
         <dd>
-            @Html.DisplayFor(model => model.Category.CategoryId)
+            @Html.DisplayFor(model => model.Category.Name)
         </dd>
     </dl>
+
+    @*@if (Model.Ratings.Any())
+    {
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        Author
+                    </th>
+                    <th>
+                        StarsCount
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.Ratings)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Author)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.StarsCount)
+                        </td>
+                        <td>
+                            
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }*@
+
 </div>
 <div>
     <a asp-action="Edit" asp-route-id="@Model.ProductId">Edit</a> |

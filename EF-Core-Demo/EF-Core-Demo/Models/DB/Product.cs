@@ -1,4 +1,6 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace EF_Core_Demo.Models.DB
@@ -15,5 +17,7 @@ namespace EF_Core_Demo.Models.DB
 
         [ForeignKey("CategoryId")]
         public Category Category { get; set; }
+
+        /*public ICollection<Rating> Ratings { get; set; }*/
     }
 }

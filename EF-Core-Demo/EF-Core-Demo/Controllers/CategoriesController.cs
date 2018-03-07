@@ -22,7 +22,15 @@ namespace EF_Core_Demo.Controllers
         // GET: Categories
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Categories.ToListAsync());
+            //We can use the Navigation Properties in the query, but they are not returned.
+            var categoriesWithProducts = _context.Categories.Where(c => c.Products.Any());
+
+            foreach (var categories in categoriesWithProducts)
+            {
+                //Always null
+                var prods = categories.Products;
+            }
+            return View(categoriesWithProducts);
         }
 
         // GET: Categories/Details/5
@@ -33,9 +41,10 @@ namespace EF_Core_Demo.Controllers
                 return NotFound();
             }
 
-            //does not work like this...
+            //Navigation_Property not loaded - because Lazy-Loading not yet supported
             //var category = _context.Categories.FirstOrDefault(c => c.CategoryId == id);
 
+            // -> Use Eager-Loading...
             var category = await _context.Categories.Include(c => c.Products).SingleOrDefaultAsync(m => m.CategoryId == id);
             if (category == null)
             {

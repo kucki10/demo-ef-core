@@ -4,8 +4,6 @@
 - [Quick overview](https://docs.microsoft.com/en-us/ef/core/)
 - [EF Tutorial](http://www.entityframeworktutorial.net/efcore/entity-framework-core-tutorial.aspx)
 - [Learn EF Core](https://www.learnentityframeworkcore.com/)
-- []()
-- []()
 
 
 
